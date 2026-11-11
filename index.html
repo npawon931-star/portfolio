@@ -151,6 +151,15 @@
         <p>기획 · 디자인 · 개발 · 배포까지 혼자 바이브 코딩으로 완성</p>
       </header>
       <ol class="dash-labs">
+        <li class="dash-lab tone-violet">
+          <button class="dash-lab-open" type="button" data-open="detail-jaetaek" aria-haspopup="dialog">
+            <span class="dash-lab-shot"><img src="assets/personal/p7-jaetaek-mate.jpg" alt="" width="1000" height="526" loading="lazy" decoding="async"></span>
+            <span class="labs-tag">AI · 생산성</span>
+            <strong>재택 MATE</strong>
+            <span class="dash-lab-sub">얼굴 인식으로 집중 · 딴짓을 자동 기록하는 재택근무 웹앱</span>
+            <span class="dash-open-hint" aria-hidden="true">+</span>
+          </button>
+        </li>
         <li class="dash-lab tone-lavender">
           <button class="dash-lab-open" type="button" data-open="detail-aipick" aria-haspopup="dialog">
             <span class="dash-lab-shot"><img src="assets/personal/p1-ai-pick.jpg" alt="" width="799" height="560" loading="lazy" decoding="async"></span>
@@ -253,7 +262,7 @@
           <ol>
             <li><a href="projects/beauport.html">뷰포트 <small>K-뷰티 수출</small></a></li>
             <li><a href="projects/reboot.html">리부트 <small>마케팅 AX</small></a></li>
-            <li><a href="#personal">개인 작업 <small>5</small></a></li>
+            <li><a href="#personal">개인 작업 <small>6</small></a></li>
           </ol>
         </nav>
         <span class="fd-front" aria-hidden="true">2026</span>
@@ -269,6 +278,35 @@
   </figure>
 
   <!-- ===== 상세 창: 위 타일과 data-open / id로 연결 ===== -->
+
+  <!-- 개인 작업 ⑥ 재택 MATE -->
+  <dialog class="detail-sheet" id="detail-jaetaek" aria-labelledby="detail-jaetaek-title">
+    <div class="detail-head">
+      <div><span class="labs-tag">AI · 생산성</span><h3 id="detail-jaetaek-title">재택 MATE — 재택근무자를 위한 AI 집중 기록</h3></div>
+      <button class="detail-close" type="button" aria-label="닫기">×</button>
+    </div>
+    <div class="detail-lab">
+      <div class="labs-media" data-shots aria-label="재택 MATE 화면 3장">
+        <div class="labs-shots">
+          <img class="is-active" src="assets/personal/p7-jaetaek-mate.jpg" alt="재택 MATE 내 워크스페이스 출근 전 화면" width="1000" height="526" loading="lazy" decoding="async" draggable="false">
+          <img src="assets/personal/p7-jaetaek-mate-2.jpg" alt="재택 MATE 근무 중 집중도 · 업무 · 쉬어간 · 딴짓 시간 기록" width="1000" height="526" loading="lazy" decoding="async" draggable="false">
+          <img src="assets/personal/p7-jaetaek-mate-3.jpg" alt="재택 MATE 하루 리포트 타임라인과 시간 사용 요약" width="1000" height="528" loading="lazy" decoding="async" draggable="false">
+        </div>
+        <div class="shot-nav">
+          <button class="shot-arrow" type="button" data-step="-1" aria-label="재택 MATE 이전 화면">‹</button>
+          <span class="shot-dots" aria-hidden="true"></span>
+          <button class="shot-arrow" type="button" data-step="1" aria-label="재택 MATE 다음 화면">›</button>
+        </div>
+      </div>
+      <div class="detail-copy">
+        <p>재택근무를 하면 하루를 어떻게 보냈는지 스스로 파악하기 어렵다는 점에서 출발한 <strong>셀프 집중 관리 서비스</strong>입니다.
+<strong>Google MediaPipe 얼굴 랜드마크</strong>로 고개 각도와 눈 감김을 실시간 분석해 집중 · 졸음 · 휴대폰 보기 · 딴 데 보기 · 자리 비움을 <strong>알림 없이 자동으로 기록</strong>합니다.
+전화 · 점심 · 화상회의 같은 이탈은 버튼 한 번으로 남기고, 퇴근할 때 집중도와 업무 흐름을 정리한 <strong>하루 리포트</strong>를 만들어 줍니다.
+카메라 영상은 <strong>저장하지 않고 분석에만 사용</strong>해 프라이버시를 지켰고, OpenAI API를 연결하면 음성 입력 · AI 계획표 · AI 총평도 쓸 수 있습니다.</p>
+        <div class="personal-links"><a href="https://jaetaekmate-as32yu2edyuvnz5a5z6xbv.streamlit.app/" target="_blank" rel="noopener noreferrer">사이트 보기 ↗<span class="sr-only"> (새 탭)</span></a></div>
+      </div>
+    </div>
+  </dialog>
 
   <!-- 개인 작업 ① AI Pick -->
   <dialog class="detail-sheet" id="detail-aipick" aria-labelledby="detail-aipick-title">
