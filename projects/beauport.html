@@ -61,8 +61,8 @@
   </section>
   <div class="cs-facts">
     <div class="cs-fact"><span class="cs-fact-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span><div><b>기간</b><span>2026.09.17 ~ 2026.09.28</span></div></div>
-    <div class="cs-fact"><span class="cs-fact-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6M18 15a5 5 0 0 1 3 4v2"/></svg></span><div><b>프로젝트</b><span>AX 무역마스터 1차 프로젝트 · 슈퍼주니5조 (4인 팀)</span></div></div>
-    <div class="cs-fact"><span class="cs-fact-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span><div><b>주요 기술</b><span>Python · Flask · JSON / CSV 데이터 설계 · PDF 표 구조화 · Chart.js · HTML / CSS(Pretendard)</span></div></div>
+    <div class="cs-fact"><span class="cs-fact-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6M18 15a5 5 0 0 1 3 4v2"/></svg></span><div><b>프로젝트</b><span>AX 무역마스터 1차 프로젝트 (4인 팀)</span></div></div>
+    <div class="cs-fact"><span class="cs-fact-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span><div><b>주요 기술</b><span>Python(pandas) · Flask · JSON / CSV 데이터 설계 · PDF 표 구조화 · Chart.js · HTML / CSS(Pretendard)</span></div></div>
     <div class="cs-fact"><span class="cs-fact-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="m8 12-2 9 6-3 6 3-2-9"/></svg></span><div><b>결과</b><span>최종 2등 · 피어리뷰 1등</span></div></div>
   </div>
 </div>
@@ -448,6 +448,17 @@
 </code></pre>
     </div>
   </details>
+  <div class="cs-callout" id="pandas-check">
+    <span class="cs-kicker">DATA VALIDATION · PYTHON PANDAS</span>
+    <p><strong>pandas로 규칙 데이터 검증</strong> <span style="color:var(--muted);font-size:14px">(2026.09.24)</span></p>
+    <ul style="margin:8px 0 0;padding-left:20px">
+      <li>원문 345개 항목과 규칙 388개의 연결을 확인 — "이동 · 삭제" 7개는 제외 상태만 남기고, 나머지 338개가 모두 규칙에 연결되는지 점검했습니다. 구조 검사 <strong>16개 중 16개 통과</strong>.</li>
+      <li>복수 CAS 번호를 분리해 형식 · 체크섬을 검사하고, 오류 후보 <strong>4개</strong>는 지우지 않고 검토 대상으로 남겼습니다.</li>
+      <li>CAS가 없는 규칙 168개도 삭제하지 않았고, 농도 상한이 확정되지 않은 <strong>186개</strong>는 0이나 "제한 없음"으로 바꾸지 않았습니다.</li>
+    </ul>
+    <p style="margin-top:20px"><a class="button ghost" href="beauport-pandas.html" target="_blank" rel="noopener noreferrer">검증 보고서 열기 ↗<span class="sr-only"> (새 탭)</span></a></p>
+  </div>
+  <p class="cs-note">보고서의 "CAS 미기재 규칙 168개"는 388개 규칙 중 CAS 칸이 빈 규칙 수로, 위에서 설명한 미식별 JSON 행 약 168건과는 다른 집계입니다.</p>
 </section>
 
 <!-- ===== 2. 일본 성분 규제 데이터 구축 ===== -->

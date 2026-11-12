@@ -47,7 +47,11 @@
       <div class="sheet-intro">
         <h1 id="hero-title">이나원<span aria-hidden="true">.</span></h1>
         <p class="sheet-name-en">LEE NAWON <span>李奈垣</span></p>
-        <p class="hero-statement">필요한 것은 <strong>스스로 배우고</strong>,<br>배운 것은 <strong>직접 만들어 봅니다</strong>.</p>
+        <ol class="hero-statement hero-strengths" aria-label="핵심 역량">
+          <li><span aria-hidden="true">01</span><p><strong>근거 없는 정보는</strong> 내보내지 않습니다</p></li>
+          <li><span aria-hidden="true">02</span><p>흩어진 <strong>서류 · 데이터를 정리</strong>합니다</p></li>
+          <li><span aria-hidden="true">03</span><p><strong>AI로 반복 업무</strong>를 줄입니다</p></li>
+        </ol>
         <ul class="sheet-facts">
           <li><small>University</small>경희대학교</li>
           <li><small>Major</small>러시아어학 · 국제학</li>
@@ -76,7 +80,7 @@
         <ul class="cert-list">
           <li><span class="cert-score">AL</span><div><strong>OPIc</strong><small>영어 · 2026.09.13</small></div></li>
           <li><span class="cert-score">960</span><div><strong>TOEIC</strong><small>영어 · 2026.03.15</small></div></li>
-          <li><span class="cert-score">2급</span><div><strong>TORFL 토르플</strong><small>러시아어 · 2026.04.29</small></div></li>
+          <li><span class="cert-score">2급</span><div><strong>TORFL 토르플</strong><small>러시아어 · 2026.04.27</small></div></li>
         </ul>
       </article>
       <article class="sheet-card">
@@ -136,7 +140,7 @@
             <p class="dash-meta"><span class="pill">팀 프로젝트</span>2026.10.21 ~ 10.27</p>
             <h3>REBOOT</h3>
             <p class="dash-sub">미국 마케팅 AX 대시보드</p>
-            <p class="dash-role"><small>내가 맡은 일</small>콘텐츠 제작 탭 설계·개발 · 인스타그램 운영</p>
+            <p class="dash-role"><small>내가 맡은 일</small>AI 콘텐츠 제작 탭 설계·개발 (광고 규제 자동 점검)</p>
             <span class="dash-cta">내가 한 일 보기 <span aria-hidden="true">↗</span></span>
           </div>
         </a>
@@ -148,7 +152,7 @@
       <header class="dash-head">
         <span class="eyebrow" data-number="02">Personal work</span>
         <h2 id="personal-title">혼자서 만든 <em class="hl">개인 작업</em></h2>
-        <p>기획 · 디자인 · 개발 · 배포까지 혼자 바이브 코딩으로 완성</p>
+        <p>AI 도구를 활용해 기획부터 배포까지 혼자 완성</p>
       </header>
       <ol class="dash-labs">
         <li class="dash-lab tone-violet">
@@ -166,15 +170,6 @@
             <span class="labs-tag">AI 도구</span>
             <strong>AI Pick</strong>
             <span class="dash-lab-sub">AI 서비스 113개를 분야별로 비교하는 디렉터리</span>
-            <span class="dash-open-hint" aria-hidden="true">+</span>
-          </button>
-        </li>
-        <li class="dash-lab tone-cream">
-          <button class="dash-lab-open" type="button" data-open="detail-airfilm" aria-haspopup="dialog">
-            <span class="dash-lab-shot"><img src="assets/personal/p2-airfilm.jpg" alt="" width="800" height="552" loading="lazy" decoding="async"></span>
-            <span class="labs-tag">브랜딩</span>
-            <strong>AIRFILM</strong>
-            <span class="dash-lab-sub">가상 필름 카메라의 광고 영상 · 랜딩 페이지</span>
             <span class="dash-open-hint" aria-hidden="true">+</span>
           </button>
         </li>
@@ -196,16 +191,15 @@
             <span class="dash-open-hint" aria-hidden="true">+</span>
           </button>
         </li>
-        <li class="dash-lab tone-peach">
-          <button class="dash-lab-open" type="button" data-open="detail-halloween" aria-haspopup="dialog">
-            <span class="dash-lab-shot"><img src="assets/personal/p5-halloween-photobooth.jpg" alt="" width="799" height="560" loading="lazy" decoding="async"></span>
-            <span class="labs-tag">게임 · 이벤트</span>
-            <strong>할로윈 시즌 프로젝트</strong>
-            <span class="dash-lab-sub">픽셀 미니게임 Boo Village와 포토부스</span>
-            <span class="dash-open-hint" aria-hidden="true">+</span>
-          </button>
-        </li>
       </ol>
+      <!-- 기타 작업: 직무 관련성이 낮은 작업은 한 줄로 묶음 (누르면 상세 내용이 열림) -->
+      <div class="dash-etc">
+        <span class="dash-etc-label">기타 작업</span>
+        <ul>
+          <li><button type="button" data-open="detail-airfilm" aria-haspopup="dialog"><strong>AIRFILM</strong><span>가상 제품 광고 영상 · 랜딩 페이지</span><i aria-hidden="true">+</i></button></li>
+          <li><button type="button" data-open="detail-halloween" aria-haspopup="dialog"><strong>할로윈 시즌 프로젝트</strong><span>픽셀 미니게임 · 포토부스</span><i aria-hidden="true">+</i></button></li>
+        </ul>
+      </div>
     </section>
 
     <!-- ===== 03 영상 · 미디어 활동: 누르면 영상 목록이 열림 ===== -->
@@ -225,9 +219,9 @@
             <span class="media-main">
               <span class="media-kicker"><span class="onair"><i aria-hidden="true"></i>ON AIR</span>Campus broadcasting</span>
               <span class="media-name">VOU 경희대학교 방송국</span>
-              <span class="media-roles">기자 · 편집자 / PD / 아나운서</span>
+              <span class="media-roles">기자 · 편집자 / PD (제작부장) / 아나운서</span>
             </span>
-            <span class="dash-media-meta"><span>2023.10 – 2024.12</span><strong>영상 11편 · 사이트 1</strong><span class="dash-open-hint" aria-hidden="true">+</span></span>
+            <span class="dash-media-meta"><span>2023.11 – 2024.12</span><strong>영상 11편 · 사이트 1</strong><span class="dash-open-hint" aria-hidden="true">+</span></span>
           </button>
         </li>
         <li>
@@ -384,7 +378,7 @@
       </div>
       <div class="detail-copy">
         <p>지금까지 배운 프롬프트 기법과 실습 예시를 <strong>12개 카테고리, 100개 이상의 복사용 프롬프트</strong>로 정리한 사이트입니다.
-무역 실무 · 시장 조사 · 보고서 · 바이브 코딩까지, <strong>빈칸만 바꿔 바로 쓸 수 있게</strong> 만들었습니다.</p>
+무역 실무 · 시장 조사 · 보고서 · AI 코딩까지, <strong>빈칸만 바꿔 바로 쓸 수 있게</strong> 만들었습니다.</p>
         <div class="personal-links"><a href="https://dulcet-donut-848eac.netlify.app/" target="_blank" rel="noopener noreferrer">사이트 보기 ↗<span class="sr-only"> (새 탭)</span></a></div>
       </div>
     </div>
@@ -447,7 +441,7 @@
   <!-- 영상 활동: VOU 경희대학교 방송국 -->
   <dialog class="detail-sheet detail-media" id="detail-vou" aria-labelledby="detail-vou-title">
     <div class="detail-head">
-      <div><span class="media-kicker"><span class="onair"><i aria-hidden="true"></i>ON AIR</span>Campus broadcasting · 2023.10.20 – 2024.12.27</span><h3 id="detail-vou-title">VOU 경희대학교 방송국</h3><p class="media-roles">기자 · 편집자 / PD / 아나운서 / 아카이브 사이트 제작</p></div>
+      <div><span class="media-kicker"><span class="onair"><i aria-hidden="true"></i>ON AIR</span>Campus broadcasting · 2023.11 – 2024.12</span><h3 id="detail-vou-title">VOU 경희대학교 방송국</h3><p class="media-roles">기자 · 편집자 / PD (제작부장) / 아나운서 / 아카이브 사이트 제작</p></div>
       <button class="detail-close" type="button" aria-label="닫기">×</button>
     </div>
         <div class="media-body">
@@ -496,7 +490,7 @@
           </div>
 
           <div class="media-group">
-            <div class="media-group-head"><span>Planning &amp; Production</span><h3>PD</h3><p>학과 소개 · 드라마 · 브이로그 · 홍보 영상 기획 및 제작</p></div>
+            <div class="media-group-head"><span>Planning &amp; Production</span><h3>PD (제작부장)</h3><p>학과 소개 · 드라마 · 브이로그 · 홍보 영상 기획 및 제작</p></div>
             <ul class="media-grid">
               <li><a class="media-card" href="https://www.youtube.com/watch?v=s4CZEv93C9Q" target="_blank" rel="noopener noreferrer" data-video="s4CZEv93C9Q">
                 <span class="media-thumb"><img src="assets/vou/s4CZEv93C9Q.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="media-play" aria-hidden="true"></span></span>

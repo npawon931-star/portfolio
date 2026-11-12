@@ -387,6 +387,7 @@ pre code { padding: 0; font-size: inherit; background: none; }
 .gallery figcaption { font-size: 11px; color: var(--muted); margin-top: var(--space-xs); line-height: 1.7; }
 .video-block { padding: 26px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); margin: 26px 0; text-align: center; }
 .video-block video { width: 100%; max-height: 650px; border-radius: 10px; background: var(--video-background); }
+.video-block iframe { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; border-radius: 10px; background: var(--video-background); }
 .video-block.reel video { width: min(100%, 300px); max-height: 540px; }
 .video-block figcaption { font-size: 12px; color: var(--muted); margin-top: 12px; }
 .video-placeholder { min-height: 200px; display: grid; place-content: center; padding: 30px; border: 1px dashed var(--video-line); border-radius: 18px; background: var(--surface); text-align: center; }
@@ -1572,3 +1573,36 @@ a.wf-card:hover { transform: translateY(-2px); box-shadow: 0 0 0 4px var(--wf-pi
   .wp-result ul { grid-template-columns: 1fr; gap: 12px; }
   .wp-result li + li { border-left: 0; border-top: 1px solid var(--line); padding-top: 12px; }
 }
+
+/* ===== 첫 화면 핵심 역량 3줄 ===== */
+.hero-strengths { list-style: none; padding: 0; display: grid; gap: 8px; font-size: clamp(17px, 1.7vw, 21px); line-height: 1.45; }
+.hero-strengths li { display: flex; align-items: baseline; gap: 12px; margin: 0; }
+.hero-strengths li span { flex: none; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .12em; font-variant-numeric: tabular-nums; }
+.hero-strengths li p { margin: 0; }
+@media (max-width: 600px) {
+  .hero-strengths, .archive-front .hero-strengths { font-size: 17px; gap: 6px; }
+}
+
+/* ===== REBOOT 실사용 검증 블록 · 단일 역할 카드 ===== */
+.cs-insta.is-compact { grid-template-columns: 200px minmax(0, 1fr); align-items: center; }
+@media (max-width: 760px) { .cs-insta.is-compact { grid-template-columns: 1fr; } }
+/* 역할 카드가 1개일 때: 설명 왼쪽 · 화면 오른쪽 가로형 */
+@media (min-width: 761px) {
+  .cs-cards > .cs-card:only-child { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); grid-template-rows: auto auto 1fr; column-gap: 36px; padding: 32px; }
+  .cs-cards > .cs-card:only-child > :not(.cs-thumb) { grid-column: 1; }
+  .cs-cards > .cs-card:only-child .cs-thumb { grid-column: 2; grid-row: 1 / -1; margin: 0; align-self: center; }
+  .cs-cards > .cs-card:only-child p { font-size: 14px; }
+}
+
+/* ===== 개인 작업: 메인 4개 2×2 + 기타 작업 한 줄 ===== */
+.dash-personal .dash-labs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1100px) { .dash-personal .dash-labs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.dash-etc { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed #dbe3ea; }
+.dash-etc-label { color: var(--muted); font-size: 10px; font-weight: 600; letter-spacing: .12em; }
+.dash-etc ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.dash-etc li { margin: 0; }
+.dash-etc button { display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 10px; border: 1px solid #e8edf1; border-radius: 999px; background: var(--white); color: var(--ink); font: inherit; font-size: 12px; cursor: pointer; transition: border-color .2s, background .2s; }
+.dash-etc button strong { font-weight: 650; }
+.dash-etc button span { color: var(--muted); font-size: 11px; }
+.dash-etc button i { font-style: normal; color: var(--muted); }
+.dash-etc button:hover, .dash-etc button:focus-visible { border-color: var(--ink); }
