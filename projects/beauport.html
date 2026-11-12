@@ -284,47 +284,24 @@
     <div>
       <span class="cs-kicker">PROBLEM</span>
       <h3>PDF 표는 셀 구조 없이<br>텍스트 좌표로만 저장된다</h3>
-      <p>러시아 화장품 기술규정 <strong>TR CU 009/2011</strong>의 금지 · 제한 성분은 PDF 부록 2~5에 표로 들어 있습니다. 그런데 PDF 안에서는 표 셀의 값이 <strong>텍스트 조각과 좌표</strong>로만 저장돼 있어서, 페이지 글을 순서대로 복사하면 성분명 · 농도 · 적용 제품 · 각주가 서로 섞입니다.</p>
+      <p>기술규정 <strong>TR CU 009/2011</strong> 부록 2~5의 금지 · 제한 성분 표는 <strong>텍스트 조각과 좌표</strong>로만 저장돼 있어, 그대로 복사하면 성분명 · 농도 · 적용 제품 · 각주가 섞입니다.</p>
     </div>
   </div>
 
   <div class="cs-steps">
     <div class="cs-steps-intro">
       <h3>PDF → 규칙 데이터<br>5단계</h3>
-      <p>성분명과 숫자만 뽑은 것이 아니라, <strong>"어떤 제품에, 어떤 기준으로, 어떻게 적용되는 숫자인가"</strong>를 함께 남겼습니다.</p>
-      <div class="bp-board" role="group" aria-label="러시아 규제 데이터 처리 과정 — PDF 표를 구조화">
-        <div class="bp-board-head"><span class="bp-board-dots" aria-hidden="true"><i></i><i></i><i></i></span><div><small>03 · Russia · Ingredient screening</small><b>러시아 규제 데이터 처리 과정 — PDF 표를 구조화</b></div></div>
-        <div class="bp-board-body">
-          <p class="bp-board-lead">표의 모양과 조건을 함께 <em>데이터로 옮깁니다.</em></p>
-          <table>
-            <thead><tr><th scope="col">처리</th><th scope="col">내용</th></tr></thead>
-            <tbody>
-              <tr><td>구분</td><td>부록 2~5 페이지 · 열 경계 구분</td></tr>
-              <tr><td>복원</td><td>항목 번호로 여러 줄 셀을 복원</td></tr>
-              <tr><td>분리</td><td>제품군별 한도는 규칙 행 분리</td></tr>
-              <tr><td>보존</td><td>각주 · 환산 기준 · 출처 페이지 보존</td></tr>
-            </tbody>
-          </table>
-          <ul class="bp-flow" aria-label="변환 흐름"><li>TR CU 009/2011 PDF</li><li>원문 345개 항목</li><li>규칙 388행 CSV</li></ul>
-        </div>
-      </div>
+      <p>숫자만이 아니라 <strong>"어떤 제품에, 어떤 기준으로 적용되는가"</strong>까지 남겼습니다.</p>
+      <ul class="bp-flow" style="margin-top:24px" aria-label="변환 흐름"><li>TR CU 009/2011 PDF</li><li>원문 345개 항목</li><li>규칙 388행 CSV</li></ul>
     </div>
     <ol class="cs-step-list">
-      <li><b>페이지 구분</b><span>부록 2~5가 있는 페이지를 구분</span></li>
-      <li><b>열 분리</b><span>텍스트 조각의 위치와 표의 세로 경계로 성분명 · CAS · 제품 범위 · 최대 농도 · 기타 제한 · 경고를 열별로 나눔</span></li>
-      <li><b>셀 복원</b><span>원문 표의 항목 번호를 기준으로 여러 줄에 걸친 셀을 하나의 항목으로 모음</span></li>
-      <li><b>규칙 행 분리</b><span>제품 유형에 따라 한도가 다르면 행을 나눔 — 예: 제품군 A 1% / 제품군 B 0.5% → 2행, 각 행에 원문 조건을 붙임</span></li>
-      <li><b>조건 보존</b><span>환산 기준 · 불순물 기준 · 혼합 총량 같은 조건, 부록 각주, 출처 페이지를 필드로 보존</span></li>
+      <li><b>페이지 구분</b><span>부록 2~5 페이지 구분</span></li>
+      <li><b>열 분리</b><span>좌표와 세로 경계로 성분명 · CAS · 제품 범위 · 최대 농도 · 경고를 열별로 나눔</span></li>
+      <li><b>셀 복원</b><span>항목 번호 기준으로 여러 줄 셀을 하나로 모음</span></li>
+      <li><b>규칙 행 분리</b><span>제품군별 한도가 다르면 행을 나눔 (A 1% / B 0.5% → 2행)</span></li>
+      <li><b>조건 보존</b><span>환산 · 불순물 기준, 각주, 출처 페이지를 필드로 보존</span></li>
     </ol>
   </div>
-
-  <h3 class="cs-title">결측치 처리 — 비어 있는 칸은 비어 있는 대로</h3>
-  <ul class="cs-points">
-    <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>빈 농도란</b><span>0 · "제한 없음"으로 채우지 않음</span></li>
-    <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>한국어명 없음</b><span><code>kr_name</code> 공란 유지</span></li>
-    <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>농도 · 제품 연결 불명확</b><span>한도 칸은 비우고 확인 대상으로 표시</span></li>
-    <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>산출물</b><span>규칙 CSV · 원문 대조 CSV</span></li>
-  </ul>
 
   <div class="cs-split reverse">
     <div class="bp-board" role="group" aria-label="러시아 규제 데이터 처리 과정 — 데이터 결측치 처리">
@@ -338,62 +315,34 @@
             <tr><td>03 미식별 목록</td><td>별도로 분류 · 로딩은 계속</td><td><span class="bp-badge is-warn">unidentified</span></td></tr>
           </tbody>
         </table>
-        <pre class="bp-code" aria-label="식별자 없는 규칙 JSON 행 예시"><code>{
-      <span class="k">"cas_no"</span>: <span class="e">""</span>,
-      <span class="k">"inci_name"</span>: <span class="e">""</span>,
-      <span class="k">"kr_name"</span>: <span class="e">""</span>,
-      <span class="k">"status"</span>: <span class="s">"RESTRICTED"</span>,
-      <span class="k">"max_concentration"</span>: 0.0,
-      <span class="k">"product_type_scope"</span>: <span class="s">"COMPLEX"</span>,
-      <span class="k">"conditions"</span>: <span class="s">"배합 한도 및 사용 조건 준수 필요"</span>,
-      <span class="k">"regulation_source"</span>: <span class="s">"TR CU 009/2011 Annex 2/1b"</span>
-    }</code></pre>
-        <p class="bp-note">약 168건의 미식별 JSON 행은 345개 원문 항목 · 388개 규칙 행 집계와 별개입니다. 미검출 ≠ 법적 적합.</p>
+        <p class="bp-note">약 168건의 미식별 JSON 행은 345개 원문 항목 · 388개 규칙 행 집계와 별개입니다.</p>
       </div>
     </div>
     <div>
-      <span class="cs-kicker">LOADING</span>
-      <h3>식별자 없는 행이<br>전체를 막지 않게</h3>
-      <p>규칙 JSON 중에는 성분명 · CAS · 한국어명이 모두 없는 행이 <strong>약 168건</strong> 섞여 있었습니다. 이 행들 때문에 국가 규제 데이터 전체를 못 쓰게 되거나, 반대로 엉뚱한 성분과 일치하지 않도록 로딩 방식을 정했습니다.</p>
-      <ul class="cs-chips">
-        <li>원본 행은 지우지 않고 보존</li>
-        <li>식별 정보가 있는 규칙 → 스크리닝 목록</li>
-        <li>식별자 없는 행 → unidentified 목록</li>
-        <li>그래도 국가 데이터는 ready로 로딩</li>
-        <li>성분명이나 CAS가 있는 규칙만 비교</li>
-      </ul>
+      <span class="cs-kicker">MISSING VALUES</span>
+      <h3>비어 있는 칸은 비어 있는 대로,<br>식별자 없는 행이 전체를 막지 않게</h3>
+      <p>빈 농도란은 0이나 "제한 없음"으로 채우지 않고, 원문에 없는 한국어명은 공란으로, 농도와 제품의 연결이 불명확하면 <strong>확인 대상</strong>으로 표시했습니다. 성분명 · CAS가 모두 없는 행 <strong>약 168건</strong>은 지우지 않고 unidentified로 분류해, 국가 데이터 로딩은 계속되고 식별 가능한 규칙만 비교하도록 했습니다.</p>
     </div>
   </div>
-  <p class="cs-note">약 168건은 JSON 데이터의 미식별 행 수이며, PDF 부록의 345개 원문 항목 · 388개 규칙 행과는 <strong>서로 다른 집계</strong>입니다.</p>
 
   <div class="cs-quote">
-    <div class="bp-stack-v">
-      <a class="cs-frame cs-zoom" href="../assets/beauport/bp-14-tab1-ru-screening.png" target="_blank" rel="noopener noreferrer" data-caption="러시아 성분 스크리닝"><img src="../assets/beauport/bp-14-tab1-ru-screening.png" alt="러시아 성분 스크리닝" width="1896" height="1078" loading="lazy" decoding="async"></a>
-      <div class="bp-board" role="group" aria-label="성분 스크리닝 ③ 근거가 보이는 결과">
-        <div class="bp-board-head"><span class="bp-board-dots" aria-hidden="true"><i></i><i></i><i></i></span><div><small>03 · Ingredient screening</small><b>성분 스크리닝 ③ 근거가 보이는 결과</b></div></div>
-        <div class="bp-board-body">
-          <p class="bp-board-lead">AI가 규제를 <em>추측하지 않습니다.</em></p>
-          <table>
-            <thead><tr><th scope="col">유형</th><th scope="col">기준</th><th scope="col">판정</th></tr></thead>
-            <tbody>
-              <tr><td>금지</td><td>일치 규칙 확인</td><td><span class="bp-badge is-bad">PROHIBITED</span></td></tr>
-              <tr><td>제한</td><td>입력량 ↔ 허용 한도</td><td><span class="bp-badge is-warn">RESTRICTED</span></td></tr>
-              <tr><td>불확실</td><td>조건 · 용도 확인 필요</td><td><span class="bp-badge">REVIEW</span></td></tr>
-            </tbody>
-          </table>
-          <ul class="bp-list">
-            <li>JSON의 <code>conditions</code>와 공식 출처 표시</li>
-            <li>확정할 수 없는 조건은 원문 확인으로 안내</li>
-            <li>결과표 내보내기 + 관련 공지 · 준비 로드맵</li>
-          </ul>
-          <p class="bp-note">“검출되지 않음”은 법적 적합의 단정이 아닙니다.</p>
-        </div>
+    <div class="bp-board" role="group" aria-label="성분 스크리닝 — 근거가 보이는 결과">
+      <div class="bp-board-head"><span class="bp-board-dots" aria-hidden="true"><i></i><i></i><i></i></span><div><small>03 · Ingredient screening</small><b>성분 스크리닝 — 근거가 보이는 결과</b></div></div>
+      <div class="bp-board-body">
+        <table>
+          <thead><tr><th scope="col">유형</th><th scope="col">기준</th><th scope="col">판정</th></tr></thead>
+          <tbody>
+            <tr><td>금지</td><td>일치 규칙 확인</td><td><span class="bp-badge is-bad">PROHIBITED</span></td></tr>
+            <tr><td>제한</td><td>입력량 ↔ 허용 한도</td><td><span class="bp-badge is-warn">RESTRICTED</span></td></tr>
+            <tr><td>불확실</td><td>조건 · 용도 확인 필요</td><td><span class="bp-badge">REVIEW</span></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
     <div class="cs-quote-card">
       <span class="cs-quote-mark" aria-hidden="true">“</span>
       <h3>미검출 ≠ 법적 적합</h3>
-      <p>식별할 수 있는 규칙에서 일치하는 항목을 찾지 못한 것과 <strong>제품이 법적으로 적합하다는 것은 다른 말</strong>입니다. 그래서 화면의 <code>통과(Pass)</code>를 "등록 목록에 일치하는 적용 항목이 없다"는 뜻으로 명시하고, 조건이나 용도를 확정할 수 없는 성분은 <code>확인 필요(REVIEW)</code>로 돌려주도록 했습니다. AI가 규제를 추측하지 않고, 원문 조건과 출처를 함께 보여 줍니다.</p>
+      <p><code>통과(Pass)</code>는 "등록 목록에 일치하는 항목이 없다"는 뜻일 뿐, <strong>법적 적합을 단정하지 않습니다.</strong> 조건을 확정할 수 없는 성분은 <code>확인 필요(REVIEW)</code>로 돌려주고, 원문 조건과 출처를 함께 보여 줍니다.</p>
     </div>
   </div>
 
@@ -407,58 +356,17 @@
     <li>적합성 선언 등록 또는 국가등록(SGR)</li>
     <li>EAC 표시 · 출시 · 사후 관리</li>
   </ol>
-  <p class="cs-text">확인되지 않은 기간은 <code>기간 확인 필요</code>로 둡니다.</p>
   <a class="cs-source" href="https://helpcosmetic.or.kr/pc/license/license06.php?ptype=view&amp;idx=5139&amp;page=2&amp;code=foreign_regulations" target="_blank" rel="noopener noreferrer"><span class="cs-source-label">출처</span><span class="cs-source-name">러시아 수출 로드맵 — 화장품 해외 규제정보 (helpcosmetic.or.kr)</span><span aria-hidden="true">↗</span><span class="sr-only"> (새 탭)</span></a>
 
-  <details class="cs-more">
-    <summary>원문 처리 표로 자세히 보기</summary>
-    <div class="cs-more-body">
-      <h4>PDF → 규칙 데이터 5단계</h4>
-      <div class="table-scroll" role="region" tabindex="0" aria-label="표 — 가로로 스크롤하여 전체 내용 보기">
-        <table>
-          <thead><tr><th scope="col">단계</th><th scope="col">처리</th></tr></thead>
-          <tbody>
-            <tr><td>① 페이지 구분</td><td>부록 2~5가 있는 페이지를 구분</td></tr>
-            <tr><td>② 열 분리</td><td>텍스트 조각의 위치와 표의 세로 경계로 <strong>성분명 · CAS · 제품 범위 · 최대 농도 · 기타 제한 · 경고</strong>를 열별로 나눔</td></tr>
-            <tr><td>③ 셀 복원</td><td>원문 표의 <strong>항목 번호를 기준으로</strong> 여러 줄에 걸친 셀을 하나의 항목으로 모음</td></tr>
-            <tr><td>④ 규칙 행 분리</td><td>제품 유형에 따라 한도가 다르면 행을 나눔 — 예: 제품군 A 1% / 제품군 B 0.5% → 2행, 각 행에 원문 조건을 붙임</td></tr>
-            <tr><td>⑤ 조건 보존</td><td>환산 기준 · 불순물 기준 · 혼합 총량 같은 조건, 부록 각주, <strong>출처 페이지</strong>를 필드로 보존</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <h4>결측치 처리</h4>
-      <div class="table-scroll" role="region" tabindex="0" aria-label="표 — 가로로 스크롤하여 전체 내용 보기">
-        <table>
-          <thead><tr><th scope="col">원문 상황</th><th scope="col">처리</th></tr></thead>
-          <tbody>
-            <tr><td>원문 표 항목 <strong>345개</strong></td><td>"이동 또는 삭제"로 표시된 <strong>7개</strong>는 규칙에서 제외하되, 원문 대조 파일에 상태를 남김</td></tr>
-            <tr><td>나머지 <strong>338개</strong> 항목</td><td>제품별 조건을 나눠 <strong>388개 규칙 행</strong>으로 정리</td></tr>
-            <tr><td>농도란이 비어 있음</td><td><strong>0이나 "제한 없음"으로 채우지 않음</strong></td></tr>
-            <tr><td>한국어 성분명이 원문에 없음</td><td><code>kr_name</code>을 공란으로 둠</td></tr>
-            <tr><td>여러 농도와 제품 조건의 연결이 불명확</td><td>숫자를 임의로 연결하지 않고 원문에 보존, 한도 칸은 비우고 <strong>확인 대상</strong>으로 표시 (예: A2-57의 3.5%와 2.1%)</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <h4>로딩 단계</h4>
-<pre><code class="language-text">1. 원본 행은 지우지 않고 보존
-2. 식별 정보가 있는 규칙 → 스크리닝에 사용하는 규칙 목록
-3. 식별자가 없는 행      → unidentified 목록으로 따로 분류
-4. 그 행을 만나도 국가 데이터 전체는 ready 상태로 로딩
-5. 스크리닝은 성분명이나 CAS가 있는 규칙만 사용자 성분과 비교
-</code></pre>
-    </div>
-  </details>
   <div class="cs-callout" id="pandas-check">
     <span class="cs-kicker">DATA VALIDATION · PYTHON PANDAS</span>
     <p><strong>pandas로 규칙 데이터 검증</strong> <span style="color:var(--muted);font-size:15.5px">(2026.09.24)</span></p>
     <ul style="margin:8px 0 0;padding-left:20px">
-      <li>원문 345개 항목과 규칙 388개의 연결을 확인 — "이동 · 삭제" 7개는 제외 상태만 남기고, 나머지 338개가 모두 규칙에 연결되는지 점검했습니다. 구조 검사 <strong>16개 중 16개 통과</strong>.</li>
-      <li>복수 CAS 번호를 분리해 형식 · 체크섬을 검사하고, 오류 후보 <strong>4개</strong>는 지우지 않고 검토 대상으로 남겼습니다.</li>
-      <li>CAS가 없는 규칙 168개도 삭제하지 않았고, 농도 상한이 확정되지 않은 <strong>186개</strong>는 0이나 "제한 없음"으로 바꾸지 않았습니다.</li>
+      <li>원문 338개 유효 항목이 388개 규칙에 모두 연결되는지 점검 — 구조 검사 <strong>16/16 통과</strong>.</li>
+      <li>CAS 형식 · 체크섬 오류 후보 <strong>4개</strong>, 농도 상한 미확정 <strong>186개</strong>는 지우거나 채우지 않고 검토 대상으로 남김.</li>
     </ul>
     <p style="margin-top:20px"><a class="button ghost" href="beauport-pandas.html" target="_blank" rel="noopener noreferrer">검증 보고서 열기 ↗<span class="sr-only"> (새 탭)</span></a></p>
   </div>
-  <p class="cs-note">보고서의 "CAS 미기재 규칙 168개"는 388개 규칙 중 CAS 칸이 빈 규칙 수로, 위에서 설명한 미식별 JSON 행 약 168건과는 다른 집계입니다.</p>
 </section>
 
 <!-- ===== 2. 일본 성분 규제 데이터 구축 ===== -->
@@ -532,107 +440,24 @@
     <div>
       <span class="cs-kicker">가장 중요한 판단</span>
       <h3>12개월과 8개월을<br>비교하지 않기</h3>
-      <p>처음 확인한 사이트의 증감률은 2025년 <strong>12개월 전체</strong>와 2026년 <strong>8개월 누계</strong>를 비교한 값이었습니다. 이 값을 성장률로 보여 주면 집계 기간이 짧아서 생긴 차이를 <strong>수출 감소로 오해</strong>하게 됩니다. 그래서 확인 가능한 두 금액으로 새 지표를 만들었습니다.</p>
+      <p>사이트의 증감률은 2025년 <strong>12개월</strong>과 2026년 <strong>8개월 누계</strong>를 비교한 값이라, 그대로 쓰면 <strong>수출 감소로 오해</strong>하게 됩니다. 그래서 KCII 수출 통계 하나만 출처로 삼아 새 지표를 만들고, 모든 행에 출처를 남겼습니다.</p>
     </div>
   </div>
   <div class="cs-formula">
     <b>전년도 연간 실적 대비 달성률 = 2026년 1~8월 수출액 ÷ 2025년 연간 수출액 × 100</b>
-    <p>예) 미국 2,030,257 ÷ 2,184,234 × 100 ≈ 93.0% → "2026년 8월까지 전년도 연간 실적의 93.0%에 도달했다"<br>전년 동기 대비 성장률이나 올해 목표 달성률이 아님 · 소수점 첫째 자리 반올림. 대시보드 시장 탭의 원형 그래프 카드에 <strong>계산 방법과 함께</strong> 표시됩니다.</p>
+    <p>예) 미국 2,030,257 ÷ 2,184,234 × 100 ≈ 93.0% · 전년 동기 대비 성장률이 아님 · 대시보드에 <strong>계산 방법과 함께</strong> 표시</p>
   </div>
-  <ul class="cs-points">
-    <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>출처 하나만</b><span>대한화장품산업연구원(KCII) 국가별 수출현황 — 이 출처 하나만 사용</span></li>
-    <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>표준화</b><span>국가별 2021~2026 수출액 · 점유율을 국가 · 연도별 한 행의 CSV로, 국가명 · 단위 · 집계 기간을 명시</span></li>
-    <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>추적성</b><span>모든 행에 원본 출처를 남겨 수치를 되짚을 수 있게 함</span></li>
-  </ul>
 
-  <h3 class="cs-title">유통사 JSON 스키마 설계</h3>
+  <h3 class="cs-title">유통사 JSON 스키마 · <code>distributor_service.py</code></h3>
   <div class="cs-split">
-    <div class="cs-media-row" style="margin:0; grid-template-columns:1fr">
-      <a class="cs-frame cs-zoom" href="../assets/beauport/bp-34-tab3-ru-distributors.png" target="_blank" rel="noopener noreferrer" data-caption="러시아 유통사 후보"><img src="../assets/beauport/bp-34-tab3-ru-distributors.png" alt="러시아 유통사 후보" width="1900" height="1078" loading="lazy" decoding="async"></a>
-      <a class="cs-frame cs-zoom" href="../assets/beauport/bp-32-tab3-jp-distributors.png" target="_blank" rel="noopener noreferrer" data-caption="일본 유통사 후보"><img src="../assets/beauport/bp-32-tab3-jp-distributors.png" alt="일본 유통사 후보" width="1896" height="1078" loading="lazy" decoding="async"></a>
-    </div>
+    <a class="cs-frame cs-zoom" href="../assets/beauport/bp-34-tab3-ru-distributors.png" target="_blank" rel="noopener noreferrer" data-caption="러시아 유통사 후보"><img src="../assets/beauport/bp-34-tab3-ru-distributors.png" alt="러시아 유통사 후보" width="1900" height="1078" loading="lazy" decoding="async"></a>
     <ul class="cs-points" style="grid-template-columns:1fr; margin:0">
-      <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>시장 세분화</b><span>단독 시장(미국 · 중국 · 일본 · UAE)과 경제 · 유통 블록 시장(ASEAN 등)으로 나눠 국가 · 권역별 폴더 구성</span></li>
-      <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>배열 타입 강제</b><span>취급 제품 · 유통 채널 · 취급 브랜드는 반드시 리스트로 → "스킨케어 취급 벤더" 같은 필터 검색으로 확장 가능</span></li>
-      <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="m8 12 3 3 5-6"/></svg></i><b>필수값</b><span>유통사 이름 · 공식 URL · 검증일 — 화면에는 "자료 조회일 · 근거 자료"로 표시</span></li>
+      <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>배열 타입 강제</b><span>취급 제품 · 채널 · 브랜드는 리스트로 → 필터 검색으로 확장 가능</span></li>
+      <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg></i><b>필수값 검증</b><span>이름 · 공식 URL · 검증일 중 하나라도 없으면 화면에 노출하지 않음</span></li>
+      <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>동적 라우팅</b><span>권역 · 회원국 선택 시 하위 폴더(예: <code>asean/TH</code>) 자동 매핑, 회원국 미선택 시 안내 메시지</span></li>
     </ul>
   </div>
-
-  <h3 class="cs-title"><code>distributor_service.py</code> — 동적 라우팅과 예외 처리</h3>
-  <ul class="cs-points">
-    <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>동적 경로 탐색</b><span>권역과 회원국을 고르면 하위 폴더(예: <code>asean/TH</code>)를 자동으로 찾아 매핑</span></li>
-    <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg></i><b>결측치 방어</b><span>이름 · 공식 URL · <code>verified_at</code> 중 하나라도 빠진 데이터는 건너뛰어 화면에 노출하지 않음</span></li>
-    <li><i aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg></i><b>회원국 선택 검증</b><span>ASEAN만 고르고 회원국을 고르지 않으면 빈 화면 대신 "실제 목적 회원국을 선택해 주세요" 안내</span></li>
-  </ul>
-  <div class="cs-split">
-    <div class="bp-board" role="group" aria-label="국가별 정보를 같은 방식으로 연결">
-      <div class="bp-board-head"><span class="bp-board-dots" aria-hidden="true"><i></i><i></i><i></i></span><div><small>05 · Trade data pipeline</small><b>국가별 정보를 같은 방식으로 연결</b></div></div>
-      <div class="bp-board-body">
-        <p class="bp-board-lead">로드맵, 관세, 통관, <em>유통사 후보</em></p>
-        <ul class="bp-tiles">
-          <li class="bp-tile"><small>단독 시장</small><strong>미국 · 일본 · 중국 · UAE · 러시아</strong></li>
-          <li class="bp-tile"><small>권역 블록</small><strong>EU · ASEAN</strong></li>
-        </ul>
-        <table>
-          <thead><tr><th scope="col">단계</th><th scope="col">처리</th></tr></thead>
-          <tbody>
-            <tr><td>01 시장 세분화</td><td>국가 · 권역별 폴더와 데이터</td></tr>
-            <tr><td>02 JSON 스키마</td><td>대시보드가 쓰는 공통 필드</td></tr>
-            <tr><td>03 동적 라우팅</td><td>선택 국가에 맞는 데이터 탐색</td></tr>
-            <tr><td>04 큐레이션</td><td>로드맵 · 통관 · 유통사 제공</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="cs-callout" style="margin:0">같은 4단계 로직 <strong>세분화 → 스키마 → 동적 라우팅 → 큐레이션</strong>을 수출 로드맵 · 관세 · 통관 데이터에도 똑같이 적용해, 국가마다 결과는 달라도 만드는 과정은 하나로 맞췄습니다.</div>
-  </div>
-
-  <details class="cs-more">
-    <summary>시장 · 유통사 표로 자세히 보기</summary>
-    <div class="cs-more-body">
-      <h4>KCII 수출 통계</h4>
-      <div class="table-scroll" role="region" tabindex="0" aria-label="표 — 가로로 스크롤하여 전체 내용 보기">
-        <table>
-          <thead><tr><th scope="col">작업</th><th scope="col">내용</th></tr></thead>
-          <tbody>
-            <tr><td>출처</td><td>대한화장품산업연구원(KCII) 국가별 수출현황 — 이 출처 하나만 사용</td></tr>
-            <tr><td>표준화</td><td>국가별 2021~2026 수출액 · 점유율을 <strong>국가 · 연도별 한 행</strong>의 CSV로, 국가명 · 단위 · 집계 기간을 명시</td></tr>
-            <tr><td>추적성</td><td><strong>모든 행에 원본 출처</strong>를 남겨 수치를 되짚을 수 있게 함</td></tr>
-          </tbody>
-        </table>
-      </div>
-<pre><code class="language-text">전년도 연간 실적 대비 달성률 = 2026년 1~8월 수출액 ÷ 2025년 연간 수출액 × 100
-
-예) 미국  2,030,257 ÷ 2,184,234 × 100 ≈ 93.0%
-    → "2026년 8월까지 전년도 연간 실적의 93.0%에 도달했다"
-    (전년 동기 대비 성장률이나 올해 목표 달성률이 아님 · 소수점 첫째 자리 반올림)
-</code></pre>
-      <h4>유통사 JSON 스키마</h4>
-      <div class="table-scroll" role="region" tabindex="0" aria-label="표 — 가로로 스크롤하여 전체 내용 보기">
-        <table>
-          <thead><tr><th scope="col">설계</th><th scope="col">내용</th></tr></thead>
-          <tbody>
-            <tr><td><strong>시장 세분화</strong></td><td>단독 시장(미국 · 중국 · 일본 · UAE)과 경제 · 유통 블록 시장(ASEAN 등)으로 나눠 국가 · 권역별 폴더 구성</td></tr>
-            <tr><td><strong>루트 래핑</strong></td><td><code>{"state": "ready", "message": "...", "data": [...]}</code> — 화면이 데이터 상태와 오류를 바로 처리</td></tr>
-            <tr><td><strong>배열 타입 강제</strong></td><td>취급 제품(<code>product_types</code>) · 유통 채널(<code>channels</code>) · 취급 브랜드(<code>brands</code>)는 반드시 리스트로 → "스킨케어 취급 벤더", "특정 채널 입점 벤더" 같은 필터 검색으로 확장 가능</td></tr>
-            <tr><td><strong>화면용 필드</strong></td><td>유통 형태(<code>type</code>) · 상세 설명(<code>description</code>)을 추가해 백엔드 수정 없이 화면에 표시</td></tr>
-            <tr><td><strong>필수값</strong></td><td>유통사 이름 · 공식 URL(<code>source_url</code>) · 검증일(<code>verified_at</code>) — 화면에는 "자료 조회일 · 근거 자료"로 표시</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <h4><code>distributor_service.py</code></h4>
-      <div class="table-scroll" role="region" tabindex="0" aria-label="표 — 가로로 스크롤하여 전체 내용 보기">
-        <table>
-          <thead><tr><th scope="col">처리</th><th scope="col">구현</th></tr></thead>
-          <tbody>
-            <tr><td><strong>동적 경로 탐색</strong></td><td>권역과 회원국을 고르면 <code>target_dir = f"{country}/{member_state.upper()}"</code>로 하위 폴더(예: <code>asean/TH</code>)를 자동으로 찾아 매핑</td></tr>
-            <tr><td><strong>결측치 방어</strong></td><td>이름 · 공식 URL · <code>verified_at</code> 중 하나라도 빠진 데이터는 <code>continue</code>로 건너뛰어 <strong>화면에 노출하지 않음</strong></td></tr>
-            <tr><td><strong>회원국 선택 검증</strong></td><td>상위 권역(ASEAN)만 고르고 회원국을 고르지 않으면 빈 화면 대신 <code>data_pending</code> 상태와 "실제 목적 회원국을 선택해 주세요" 메시지를 반환</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </details>
+  <div class="cs-callout">같은 4단계 로직 <strong>세분화 → 스키마 → 동적 라우팅 → 큐레이션</strong>을 로드맵 · 관세 · 통관 데이터에도 적용해, 국가마다 만드는 과정을 하나로 맞췄습니다.</div>
 </section>
 
 <!-- ===== 4. 성과 ===== -->
@@ -683,17 +508,8 @@
     <p>7개 국가 · 3개 탭의 기능, 데이터 파이프라인, GitHub 협업 방식까지</p>
     <a href="beauport-detail.html" class="button">프로젝트 전체 보기 →</a>
   </div>
-  <a class="bp-board bp-cover" href="beauport-detail.html" aria-label="팀 전체 프로젝트 보기">
-    <div class="bp-board-head"><span class="bp-board-dots" aria-hidden="true"><i></i><i></i><i></i></span><div><small>BEAUPORT · K-Beauty trade dashboard</small><b>발표 자료 요약</b></div></div>
-    <div class="bp-board-body">
-      <p class="bp-cover-title">세계로 향하는 K-뷰티<small>당신의 제품이 만날 다음 시장을 선택하세요</small></p>
-      <ul class="bp-tiles">
-        <li class="bp-tile is-accent"><small>목적지</small><strong>7개</strong></li>
-        <li class="bp-tile is-accent"><small>무역 통계</small><strong>203개국</strong></li>
-        <li class="bp-tile is-accent"><small>러시아 규칙 행</small><strong>345 → 388</strong></li>
-      </ul>
-      <p class="bp-note">장희주 · 권해원 · 이나원 · 황준영</p>
-    </div>
+  <a class="bp-board bp-cover bp-cover-shot" href="beauport-detail.html" aria-label="팀 전체 프로젝트 보기">
+    <img src="../assets/beauport/bp-01-home-globe.jpg" alt="BEAUPORT 대시보드 첫 화면: 어디로 수출하겠습니까?" loading="lazy" width="1900" height="1075">
   </a>
 </section>
 

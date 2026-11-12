@@ -1335,6 +1335,7 @@ a.bp-board:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .bp-cover .bp-cover-title { margin: 0; font-size: 29px; font-weight: 800; letter-spacing: -.01em; line-height: 1.15; }
 .bp-cover .bp-cover-title small { display: block; margin-top: 6px; font-size: 14.5px; font-weight: 600; color: var(--muted); letter-spacing: .06em; }
 .bp-stack-v { display: grid; gap: 16px; min-width: 0; }
+.bp-cover-shot img { display: block; width: 100%; height: auto; }
 .cs-steps-intro .bp-board, .cs-steps-intro .bp-stack-v { margin-top: 24px; }
 @media (max-width: 640px) {
   .bp-board-body { padding: 14px 12px; }
