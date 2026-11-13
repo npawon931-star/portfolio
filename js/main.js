@@ -250,6 +250,70 @@ if (mediaCards.length && typeof HTMLDialogElement === 'function') {
   /* 닫으면 iframe을 지워 소리가 계속 나지 않게 함 */
   player.addEventListener('close', () => frame.replaceChildren());
 }
+/* ===== 3장 요약 보기: 버튼 · 주소 #summary 로 열고, 방향키 · 점 · 스와이프로 넘김 ===== */
+document.querySelectorAll('dialog.deck').forEach(deck => {
+  if (typeof deck.showModal !== 'function') return;
+  const track = deck.querySelector('.deck-track');
+  const slides = Array.from(track.children);
+  const dots = Array.from(deck.querySelectorAll('.deck-dots button'));
+  const [prev, next] = deck.querySelectorAll('.deck-nav');
+  const count = deck.querySelector('.deck-count');
+  let current = 0;
+  const show = index => {
+    current = Math.max(0, Math.min(slides.length - 1, index));
+    track.style.transform = `translateX(${-100 * current}%)`;
+    slides.forEach((slide, i) => { slide.inert = i !== current; });
+    dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === current)));
+    prev.disabled = current === 0;
+    next.disabled = current === slides.length - 1;
+    count.textContent = `${current + 1} / ${slides.length}`;
+    slides[current].scrollTop = 0;
+  };
+  const open = () => {
+    show(0);
+    deck.showModal();
+    if (location.hash !== `#${deck.id}`) history.replaceState(null, '', `#${deck.id}`);
+  };
+  document.querySelectorAll(`[data-deck-open="${deck.id}"]`).forEach(button => button.addEventListener('click', open));
+  prev.addEventListener('click', () => show(current - 1));
+  next.addEventListener('click', () => show(current + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+  deck.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft') { event.preventDefault(); show(current - 1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); show(current + 1); }
+  });
+  /* 모바일: 좌우로 밀어서 넘김 (세로 스크롤은 그대로) */
+  let startX = 0;
+  let startY = 0;
+  track.addEventListener('touchstart', event => { startX = event.touches[0].clientX; startY = event.touches[0].clientY; }, { passive: true });
+  track.addEventListener('touchend', event => {
+    const dx = event.changedTouches[0].clientX - startX;
+    const dy = event.changedTouches[0].clientY - startY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) show(current + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+  deck.querySelector('.deck-close').addEventListener('click', () => deck.close());
+  deck.addEventListener('click', event => { if (event.target === deck) deck.close(); });
+  /* 메인 카드의 "3장 요약 보기"(?from=home)로 열었으면, 닫을 때 메인으로 돌아감 */
+  const params = new URLSearchParams(location.search);
+  let fromHome = params.get('from') === 'home';
+  deck.addEventListener('close', () => {
+    if (fromHome) {
+      const ref = document.referrer && new URL(document.referrer);
+      if (ref && ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname)) history.back();
+      else location.href = '../index.html#projects';
+      return;
+    }
+    if (location.hash === `#${deck.id}`) history.replaceState(null, '', location.pathname);
+  });
+  /* 마지막 장의 "상세 내용 보기": 창을 닫고 본문으로 이동 (메인으로 돌아가지 않음) */
+  deck.querySelector('.deck-more')?.addEventListener('click', () => {
+    fromHome = false;
+    deck.close();
+    document.getElementById(deck.querySelector('.deck-more').dataset.target)?.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+  });
+  if (location.hash === `#${deck.id}`) open();
+});
+
 /* ===== 화면 둘러보기 뷰포트: 썸네일 · 좌우 버튼 · 방향키로 큰 화면 전환 ===== */
 document.querySelectorAll('[data-viewport]').forEach(viewport => {
   const thumbs = Array.from(viewport.querySelectorAll('.vp-thumb'));

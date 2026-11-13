@@ -45,6 +45,7 @@
       <p class="cs-lead"><strong>"AI와 대화하며 콘텐츠를 만들되, 만들 때마다 미국 광고 규제를 통과하는지 확인하는"</strong> 콘텐츠 제작 탭을 만들었습니다.</p>
       <div class="cs-badges"><span class="cs-badge"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="m8 12-2 9 6-3 6 3-2-9"/></svg> 최종 1위</span><span class="cs-badge"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 카드뉴스 64.7% 단축</span><span class="cs-badge"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM14 3v6h6M8 13h8M8 17h5"/></svg> 이미지 52.8% 단축</span></div>
       <div class="actions">
+        <button class="button deck-open" type="button" data-deck-open="summary" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>3장 요약 보기</button>
         <a class="button" href="https://reboot-dashboard.onrender.com" target="_blank" rel="noopener noreferrer">대시보드 열기 ↗<span class="sr-only"> (새 탭)</span></a>
         <a class="button ghost" href="https://www.youtube.com/watch?v=ZjziUzAeaW4" target="_blank" rel="noopener noreferrer">▶ 시연 영상 ↗<span class="sr-only"> (새 탭)</span></a>
         <a class="button ghost" href="https://github.com/hungungworld/reboot-dashboard" target="_blank" rel="noopener noreferrer">GitHub ↗<span class="sr-only"> (새 탭)</span></a>
@@ -594,6 +595,151 @@
 <a class="back-to-top" href="#top">맨 위로 ↑</a>
 </div>
 </main>
+
+<!-- ===== 3장 요약 보기 (히어로의 "3장 요약 보기" 버튼 · 주소 #summary 로 열림) ===== -->
+<dialog class="deck" id="summary" aria-labelledby="summary-title">
+  <div class="deck-bar">
+    <strong id="summary-title">REBOOT</strong><span>3장 요약</span>
+    <span class="deck-count" aria-live="polite">1 / 3</span>
+    <button class="deck-close" type="button" aria-label="요약 닫기">×</button>
+  </div>
+  <div class="deck-viewport">
+    <div class="deck-track">
+
+      <!-- 1장: 어떤 대시보드 · 문제 · 내 역할 -->
+      <section class="deck-slide" aria-roledescription="슬라이드" aria-label="1 / 3 · 대시보드와 문제, 내 역할">
+        <div class="ds-cols" style="grid-template-columns: 1.12fr 1fr;">
+          <div class="ds-col">
+            <div>
+              <span class="ds-eyebrow"><b>01</b> 어떤 대시보드인가</span>
+              <h2>미국 마케터 한 명의 업무를<br>하나로 잇는 AX 대시보드</h2>
+              <p class="ds-lead">숙취해소 브랜드 <strong>REBOOT</strong>의 미국 진출을 위해 <strong>시장조사 → 제작 → 검토 → 운영</strong>을 한 화면에서 처리하도록 만든 대시보드입니다.</p>
+              <div class="ds-meta"><span><b>기간</b>2026.10.21 ~ 10.27</span><span><b>팀</b>6인 · 8개 업무 메뉴</span><span><b>데이터</b>외부 출처 17개 · 경쟁 제품 80개</span></div>
+            </div>
+            <div>
+              <span class="ds-label">대시보드 구성 · 내가 맡은 부분</span>
+              <div class="ds-flow">
+                <div class="ds-step"><small>01 INSIGHT</small><h3>시장조사</h3><p>Amazon · Weee! · YouTube 가격 · 리뷰 통합</p></div>
+                <div class="ds-step is-mine"><small>02 CREATE</small><h3>콘텐츠 제작</h3><p>이미지 · 카드뉴스 · 숏폼 · CRM 영문 제작</p><i class="ds-mine">내 담당</i></div>
+                <div class="ds-step"><small>03 REVIEW</small><h3>광고 심의</h3><p>FDA · FTC 기반 규칙 17개 사전 점검</p></div>
+                <div class="ds-step"><small>04 OPERATE</small><h3>운영 · 협업</h3><p>인플루언서 · 고객 응대 · 홈페이지 연동</p></div>
+              </div>
+            </div>
+            <div class="ds-rolebar"><small>MY ROLE</small><b>콘텐츠 제작 탭 설계 · 개발</b><span>시트 + AI 대화로 만들고, 만들 때마다 광고 심의 자동 점검</span></div>
+          </div>
+          <div class="ds-col">
+            <figure class="ds-shot is-fill"><img src="../assets/reboot/dash-17-content-ai-chat.jpg" alt="콘텐츠 제작 탭 — 왼쪽 AI 대화와 오른쪽 기획 메모" width="1600" height="1000" loading="lazy" decoding="async"></figure>
+            <div>
+              <span class="ds-label">Pain point · 왜 만들었나</span>
+              <div class="ds-pains">
+                <div class="ds-pain"><i>1</i><div><h3>AI에게 매번 처음부터 설명</h3><p>일반 AI 챗에 제품 정보 · 브랜드 규칙을 매번 다시 붙여 넣어야 했습니다.</p></div></div>
+                <div class="ds-pain"><i>2</i><div><h3>AI가 그럴듯한 사실을 지어냄</h3><p>없는 성분 · 가격 · 수치가 결과물에 섞여 들어갈 위험이 있었습니다.</p></div></div>
+                <div class="ds-pain"><i>3</i><div><h3>단어 하나로 규제 위반</h3><p>"hangover", "prevent" 같은 표현 하나로도 FDA 위반 — 검토는 따로 해야 했습니다.</p></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2장: 내가 구현한 기능 -->
+      <section class="deck-slide" aria-roledescription="슬라이드" aria-label="2 / 3 · 내가 구현한 기능">
+        <div class="ds-head">
+          <div>
+            <span class="ds-eyebrow"><b>02</b> 내가 구현한 기능</span>
+            <h2>시트 5칸에서 게시 전 심의까지, 한 탭에서</h2>
+          </div>
+          <p>긴 기획서 대신 5칸만 고르면 AI가 질문하며 기획을 채우고, 결과물은 만들어지는 즉시 광고 심의를 거칩니다.</p>
+        </div>
+        <div class="ds-steps4">
+          <figure><div class="ds-shot"><img src="../assets/reboot/dash-16-content-sheet.jpg" alt="콘텐츠 제작 시트 — 콘텐츠 · 채널 · 대상 · 목적 · 추가 요청" width="1600" height="1000" loading="lazy" decoding="async"></div><figcaption><h3><i>1</i>시트 5칸</h3><p>콘텐츠 · 채널 · 대상 + 목적 · 추가 요청</p></figcaption></figure>
+          <figure><div class="ds-shot"><img src="../assets/reboot/dash-17-content-ai-chat.jpg" alt="AI 대화와 기획 메모" width="1600" height="1000" loading="lazy" decoding="async"></div><figcaption><h3><i>2</i>시트를 아는 AI 대화</h3><p>한 번에 질문 하나 + 추천 답 → 기획 메모에 실시간 반영</p></figcaption></figure>
+          <figure><div class="ds-shot"><img src="../assets/reboot/dash-18-content-drafts.jpg" alt="초안 A · B · C" width="1600" height="1000" loading="lazy" decoding="async"></div><figcaption><h3><i>3</i>초안 3안 · 부분 수정</h3><p>"B안 더 짧게", "2장만" → 지정한 부분만 새 버전</p></figcaption></figure>
+          <figure class="is-key"><div class="ds-shot"><img src="../assets/reboot/sum-compliance-flag.jpg" alt="카드뉴스 장별 광고 심의 결과 — Zero Sugar 문구에 사용 불가 경고" width="1125" height="786" loading="lazy" decoding="async"></div><figcaption><h3><i>4</i>만들 때마다 광고 심의</h3><p>장별로 자동 점검 — "Zero Sugar" 문구에 <strong>사용 불가</strong> 표시</p></figcaption></figure>
+        </div>
+        <div class="ds-out">
+          <div>
+            <span class="ds-label">실제로 만든 결과물 · @reboot_us</span>
+            <strong>약 80%<small>/ 91개 게시물</small></strong>
+            <p>팀 공식 인스타그램 게시물 중 이 탭으로 기획 · 제작한 비중 (할로윈 시즌 · 제품 소개 · 캐릭터 Rebu)</p>
+          </div>
+          <div class="ds-gallery">
+            <img src="../assets/reboot/sum-out-halloween-poster.jpg" alt="할로윈 젤리 포스터 — Unleash the Flavor Spirits" width="720" height="1080" loading="lazy" decoding="async">
+            <img src="../assets/reboot/sum-out-card-01.jpg" alt="카드뉴스 1장 — A Neon Halloween Lineup" width="720" height="900" loading="lazy" decoding="async">
+            <img src="../assets/reboot/sum-out-card-06.jpg" alt="카드뉴스 6장 — Drink Original, Chilled" width="720" height="900" loading="lazy" decoding="async">
+            <img src="../assets/reboot/sum-out-card-07.jpg" alt="카드뉴스 7장 — Drink Balance, 100 mL" width="720" height="900" loading="lazy" decoding="async">
+            <img src="../assets/reboot/sum-out-card-08.jpg" alt="카드뉴스 8장 — Pick Your REBOOT" width="720" height="900" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </section>
+
+      <!-- 3장: 기술 · 구조 · 성과 -->
+      <section class="deck-slide" aria-roledescription="슬라이드" aria-label="3 / 3 · 기술과 구조, 성과">
+        <div class="ds-cols" style="grid-template-columns: 1.55fr 1fr;">
+          <div class="ds-col">
+            <div>
+              <span class="ds-eyebrow"><b>03</b> 사용한 기술 · 구조</span>
+              <h2>AI가 사실을 지어내지 못하게,<br>서버가 한 번 더 검증하는 구조</h2>
+            </div>
+            <div>
+              <span class="ds-label">대화 한 턴의 처리 흐름</span>
+              <ol class="ds-pipe">
+                <li class="is-io"><b>사용자 발화</b><span>+ 시트</span></li>
+                <li><b>읽기</b><span>DB 최신 리비전</span></li>
+                <li><b>맥락</b><span>브랜드 · 제품 사실</span></li>
+                <li><b>판단</b><span>AI → strict JSON</span></li>
+                <li class="is-key"><b>검증</b><span>서버가 변경안 거름</span></li>
+                <li class="is-key"><b>실행</b><span>명확한 요청일 때만</span></li>
+                <li class="is-io"><b>저장</b><span>트랜잭션 1회</span></li>
+              </ol>
+            </div>
+            <div>
+              <span class="ds-label">서버 검증 규칙 (일부)</span>
+              <table class="ds-table">
+                <thead><tr><th>규칙</th><th>처리</th></tr></thead>
+                <tbody>
+                  <tr><td>사실 키 거절</td><td>AI가 가격 · 성분 · 맛 구성을 바꾸려 하면 반영하지 않고 확인 대기로만 기록</td></tr>
+                  <tr><td>확정값 보호</td><td>사용자가 정한 값은 AI 제안이 덮어쓰지 못함</td></tr>
+                  <tr><td>실행 판단</td><td>"좋네", "왜 이 구도야?"는 실행하지 않음 — 유료 생성 오작동 방지</td></tr>
+                  <tr><td>통과로 둔갑 금지</td><td class="is-warn">검사 기록이 없으면 "미검토" — 절대 "통과"로 표시하지 않음</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="ds-chips"><span>Python 3.14</span><span>Flask Blueprint</span><span>SQLAlchemy</span><span>순수 JavaScript · CSS</span><span>OpenAI 구조화 출력</span><span>OpenAI Images</span><span>Seedance 2.0</span></div>
+          </div>
+          <div class="ds-kpis">
+            <span class="ds-label" style="margin-bottom:0">Results · 같은 1건 실측</span>
+            <div class="ds-kpi"><strong>−64.7<small>% 카드뉴스</small></strong>
+              <div class="ds-bars">
+                <div class="ds-bar"><span>기존</span><div><i style="width:50%"></i><em>7분 28초</em></div></div>
+                <div class="ds-bar is-after"><span>콘텐츠 탭</span><div><i style="width:17.5%"></i><em>2분 38초</em></div></div>
+              </div>
+            </div>
+            <div class="ds-kpi"><strong>−52.8<small>% 이미지</small></strong>
+              <div class="ds-bars">
+                <div class="ds-bar"><span>기존</span><div><i style="width:75%"></i><em>11분 16초</em></div></div>
+                <div class="ds-bar is-after"><span>콘텐츠 탭</span><div><i style="width:35%"></i><em>5분 19초</em></div></div>
+              </div>
+            </div>
+            <div class="ds-kpi"><strong>5 → 15<small>개</small></strong><p>같은 40분에 만들 수 있는 카드뉴스 수 (실측값 환산)</p></div>
+            <div class="ds-kpi is-award"><strong>최종 1위</strong><p>무역 AX 2기 2차 프로젝트 · 실제 공식 계정 운영에 사용</p></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+  <div class="deck-foot">
+    <button class="deck-nav" type="button" aria-label="이전 장">‹</button>
+    <div class="deck-dots">
+      <button type="button">대시보드 · 역할</button>
+      <button type="button">구현 기능</button>
+      <button type="button">기술 · 성과</button>
+    </div>
+    <button class="deck-more" type="button" data-target="roles">상세 내용 보기 ↓</button>
+    <button class="deck-nav" type="button" aria-label="다음 장">›</button>
+  </div>
+</dialog>
+
 <!-- ===== 공통 하단 ===== -->
 <footer class="site-footer">
   <div class="container footer-inner">
