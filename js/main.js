@@ -274,7 +274,7 @@ document.querySelectorAll('dialog.deck').forEach(deck => {
     deck.showModal();
     if (location.hash !== `#${deck.id}`) history.replaceState(null, '', `#${deck.id}`);
   };
-  document.querySelectorAll(`[data-deck-open="${deck.id}"]`).forEach(button => button.addEventListener('click', open));
+  document.querySelectorAll(`[data-deck-open="${deck.id}"]`).forEach(button => button.addEventListener('click', event => { event.preventDefault(); open(); }));
   prev.addEventListener('click', () => show(current - 1));
   next.addEventListener('click', () => show(current + 1));
   dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
@@ -293,23 +293,16 @@ document.querySelectorAll('dialog.deck').forEach(deck => {
   }, { passive: true });
   deck.querySelector('.deck-close').addEventListener('click', () => deck.close());
   deck.addEventListener('click', event => { if (event.target === deck) deck.close(); });
-  /* 메인 카드의 "3장 요약 보기"(?from=home)로 열었으면, 닫을 때 메인으로 돌아감 */
-  const params = new URLSearchParams(location.search);
-  let fromHome = params.get('from') === 'home';
+  /* 닫으면 연 페이지 그대로 (주소의 #요약만 지움) */
   deck.addEventListener('close', () => {
-    if (fromHome) {
-      const ref = document.referrer && new URL(document.referrer);
-      if (ref && ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname)) history.back();
-      else location.href = '../index.html#projects';
-      return;
-    }
-    if (location.hash === `#${deck.id}`) history.replaceState(null, '', location.pathname);
+    if (location.hash === `#${deck.id}`) history.replaceState(null, '', location.pathname + location.search);
   });
-  /* 마지막 장의 "상세 내용 보기": 창을 닫고 본문으로 이동 (메인으로 돌아가지 않음) */
-  deck.querySelector('.deck-more')?.addEventListener('click', () => {
-    fromHome = false;
+  /* "상세 내용 보기": 상세 페이지에선 본문으로 스크롤, 메인에선 상세 페이지로 이동 */
+  const more = deck.querySelector('.deck-more');
+  more?.addEventListener('click', () => {
+    if (more.dataset.href) { location.href = more.dataset.href; return; }
     deck.close();
-    document.getElementById(deck.querySelector('.deck-more').dataset.target)?.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    document.getElementById(more.dataset.target)?.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth' });
   });
   if (location.hash === `#${deck.id}`) open();
 });
